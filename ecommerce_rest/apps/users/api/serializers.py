@@ -28,7 +28,7 @@ class TestUserSerializer(serializers.Serializer):
         return data
     
     def create(self,validated_data):
-        return self.model.create(**validated_data)
+        return self.model.objects.create(**validated_data)
     
     def update(self,instance,validated_data):
         instance.name = validated_data.get('name',instance.name)
