@@ -15,13 +15,27 @@ Clona este repositorio en tu host.
 * Ejecuta el archivo manage.py
 
 ## Consoles -> bash: crea el proyecto de cero
-* ``` py -m venv venv  ```  crea el entorno
+* ``` py -m venv venv ``` crea el entorno
 * ``` .\venv\Scripts\activate ``` activa el entorno
 * ``` pip install djangorestframework ``` instala dependencias
 * ``` pip freeze > requirements.txt ``` guardo lista de dependencias
 * ``` pip install -r requirements.txt ``` instala dependencias
 * ``` django-admin startproject ecommerce_rest ``` crea el proyecto
 * abre el proyecto en tu editor favorito
+
+## Consoles -> bash: crea el usuario del proyecto
+* ``` cd ecommerce_rest/apps> ``` cambia al directorio apps
+* ``` django-admin startapp users ``` crea el usuario
+* ``` /users/models.py ``` crea el modelo
+* ``` pip install django-simple-history ``` instala
+* ``` pip install pillow ``` instala
+
+## Consoles -> bash: crea las migraciones de usuario
+* ``` cd ecommerce_rest> ``` cambia al directorio ecommerce_rest
+* ``` python manage.py makemigrations ``` crea migraciones
+
+## Consoles -> bash: crea el superusuario
+* ``` python manage.py createsuperuser ``` crea superusuario
 
 # Despliegue
 El proyecto no se encuentra desplegado (19/01/2025).
