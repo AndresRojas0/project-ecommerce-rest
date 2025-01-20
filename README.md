@@ -14,28 +14,62 @@ Clona este repositorio en tu host.
 * cd mi-pagina-de-inicio  
 * Ejecuta el archivo manage.py
 
-## Consoles -> bash: crea el proyecto de cero
-* ``` py -m venv venv ``` crea el entorno
-* ``` .\venv\Scripts\activate ``` activa el entorno
-* ``` pip install djangorestframework ``` instala dependencias
-* ``` pip freeze > requirements.txt ``` guardo lista de dependencias
-* ``` pip install -r requirements.txt ``` instala dependencias
-* ``` django-admin startproject ecommerce_rest ``` crea el proyecto
-* abre el proyecto en tu editor favorito
+# Crea el proyecto en forma local:
+## Crea un entorno virtual
+```
+# crea el entorno
+py -m venv venv
 
-## Consoles -> bash: crea el usuario del proyecto
-* ``` cd ecommerce_rest/apps> ``` cambia al directorio apps
-* ``` django-admin startapp users ``` crea el usuario
-* ``` /users/models.py ``` crea el modelo
-* ``` pip install django-simple-history ``` instala
-* ``` pip install pillow ``` instala
+# activa el entorno
+.\venv\Scripts\activate
 
-## Consoles -> bash: crea las migraciones de usuario
-* ``` cd ecommerce_rest> ``` cambia al directorio ecommerce_rest
-* ``` python manage.py makemigrations ``` crea migraciones
+# instala dependencias
+pip install djangorestframework
 
-## Consoles -> bash: crea el superusuario
-* ``` python manage.py createsuperuser ``` crea superusuario
+# guardo lista de dependencias
+pip freeze > requirements.txt
+
+# instala dependencias
+pip install -r requirements.txt
+
+# crea el proyecto
+django-admin startproject ecommerce_rest
+
+# abre el proyecto en tu editor favorito
+```
+
+## Crea el usuario del proyecto
+```
+# cambia al directorio apps
+cd ecommerce_rest/apps>
+
+# crea el usuario
+django-admin startapp users
+
+# crea el modelo
+/users/models.py
+
+# instala
+pip install django-simple-history
+
+# instala
+pip install pillow
+```
+
+## Crea las migraciones de usuario
+```
+# cambia al directorio ecommerce_rest
+cd ecommerce_rest>
+
+# crea migraciones
+python manage.py makemigrations
+```
+
+## Crea el superusuario
+```
+# crea superusuario
+python manage.py createsuperuser
+```
 
 # Despliegue
 El proyecto no se encuentra desplegado (19/01/2025).
