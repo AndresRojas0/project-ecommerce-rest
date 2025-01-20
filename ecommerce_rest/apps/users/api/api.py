@@ -16,8 +16,8 @@ def user_api_view(request):
         users_serializer = UserSerializer(users,many = True)
 
         test_data = {
-            'name': 'lunes',
-            'email': 'tarde@gmail.com'
+            'name': 'develop',
+            'email': 'test@gmail.com'
         }
 
         test_user = TestUserSerializer(data = test_data,context = test_data)
@@ -38,7 +38,7 @@ def user_api_view(request):
         if user_serializer.is_valid():
             user_serializer.save()
             return Response({'message':'Usuario creado correctamente!'},status = status.HTTP_201_CREATED)
-        return Response(user_serializer.errors)
+        return Response(user_serializer.errors,status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
 def user_detail_view(request,pk=None):
