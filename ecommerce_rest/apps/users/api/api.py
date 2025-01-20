@@ -41,7 +41,7 @@ def user_api_view(request):
         return Response(user_serializer.errors,status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
-def user_detail_view(request,pk=None):
+def user_detail_api_view(request,pk=None):
 
     # queryset
     user = User.objects.filter(id = pk).first()
