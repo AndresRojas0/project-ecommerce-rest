@@ -32,13 +32,17 @@ class Authentication(object):
         # found token in request
         if user is not None:
             if type(user) == str:
-                response = Response({'error':user})
+                response = Response({'error':user,'expired': self.user_token_expired},
+                                    status = status.HTTP_401_UNAUTHORIZED)
                 response.accepted_renderer = JSONRenderer()
                 response.accepted_media_type = 'application/json'
                 response.renderer_context = {}
                 return response
-            return super().dispatch(request,*args,**kwargs)
-        response = Response({'error': 'No se han enviado las credenciales.'})
+            
+            if not self.user_token_expired:
+                return super().dispatch(request, *args, **kwargs)
+        response = Response({'error': 'No se han enviado las credenciales.',
+            'expired': self.user_token_expired},status = status.HTTP_400_BAD_REQUEST)
         response.accepted_renderer = JSONRenderer()
         response.accepted_media_type = 'application/json'
         response.renderer_context = {}
