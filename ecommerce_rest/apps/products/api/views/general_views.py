@@ -22,3 +22,11 @@ class IndicatorViewSet(viewsets.GenericViewSet):
 
 class CategoryProductViewSet(viewsets.GenericViewSet):
     serializer_class = CategoryProductSerializer
+
+    def get_queryset(self):
+        return self.get_serializer().Meta.model.objects.filter(state = True)
+
+    def list(self,request):
+        data = self.get_queryset()
+        data = self.get_serializer(data,many = True)
+        return Response(data.data)
