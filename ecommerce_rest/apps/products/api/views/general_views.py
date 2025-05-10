@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework import status
 from rest_framework.response import Response
 
 from apps.base.api import GeneralListAPIView
@@ -30,3 +31,10 @@ class CategoryProductViewSet(viewsets.GenericViewSet):
         data = self.get_queryset()
         data = self.get_serializer(data,many = True)
         return Response(data.data)
+
+    def create(self,request):
+        serializer = self.serializer_class(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message':'Categoría registrada correctamente!'},status = status.HTTP_201_CREATED)
+        return Response({'message':'','error':serializer.errors},status = status.HTTP_400_BAD_REQUEST)
