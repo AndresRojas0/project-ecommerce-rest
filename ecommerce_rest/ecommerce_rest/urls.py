@@ -23,6 +23,11 @@ from drf_yasg import openapi
 
 from apps.users.views import Login,Logout,UserToken
 
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 schema_view = get_schema_view(
     openapi.Info(
         title="Documentación de API",
@@ -45,5 +50,7 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('login/',Login.as_view(), name = 'login'),
     path('logout',Logout.as_view(), name = 'logout'),
-    path('refresh-token/',UserToken.as_view(), name = 'refresh_token'),
+    #path('refresh-token/',UserToken.as_view(), name = 'refresh_token'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

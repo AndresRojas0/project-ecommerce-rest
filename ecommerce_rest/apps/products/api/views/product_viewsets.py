@@ -1,15 +1,17 @@
-from rest_framework import generics
+# from rest_framework import generics
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from apps.base.api import GeneralListAPIView
-from apps.users.authentication_mixins import Authentication
+# from apps.base.api import GeneralListAPIView
+# from apps.users.authentication_mixins import Authentication
 from apps.products.api.serializers.product_serializers import ProductSerializer
 
 
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self,pk=None):
         if pk is None:
