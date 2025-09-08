@@ -2,6 +2,7 @@
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser, MultiPartParser
 
 # from apps.base.api import GeneralListAPIView
 # from apps.users.authentication_mixins import Authentication
@@ -10,6 +11,7 @@ from apps.products.api.serializers.product_serializers import ProductSerializer
 
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
+    parsers_classes = (JSONParser, MultiPartParser)
 
     def get_queryset(self,pk=None):
         if pk is None:
