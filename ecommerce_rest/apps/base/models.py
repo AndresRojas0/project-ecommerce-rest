@@ -11,7 +11,7 @@ class BaseModel(models.Model):
     created_date = models.DateField('Fecha de Creacion', auto_now=False, auto_now_add=True)
     modify_date = models.DateField('Fecha de Modificacion', auto_now=True, auto_now_add=False)
     delete_data = models.DateField('Fecha de Eliminacion', auto_now=True, auto_now_add=False)
-    #historical = HistoricalRecords(user='users.User', inherit=True)
+    #historical = HistoricalRecords(user_model='users.User', inherit=True)
 
     @property
     def _history_user(self):
@@ -25,5 +25,3 @@ class BaseModel(models.Model):
         abstract = True
         verbose_name = 'Modelo Base'
         verbose_name_plural = 'Modelos Base'
-
-        pass

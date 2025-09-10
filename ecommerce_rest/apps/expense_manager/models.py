@@ -6,6 +6,21 @@ from simple_history.models import HistoricalRecords
 from apps.base.models import BaseModel
 from apps.products.models import Product
 
+class Provider(BaseModel):
+    ruc = models.CharField(unique=True, max_length=11)
+    business_name = models.CharField('Razón Social', unique=True, max_length=150, null=False, blank=False)
+    address = models.CharField(max_length=200)
+    phone = models.CharField(max_length=15, null=True, blank=True)
+    email = models.EmailField(null=True)
+
+    class Meta:
+        ordering = ['id']
+        verbose_name = 'Proveedor'
+        verbose_name_plural = 'Proveedores'
+
+    def __str__(self):
+        return self.business_name
+
 class Supplier(BaseModel):
     ruc = models.CharField(unique=True, max_length=11)
     business_name = models.CharField('Razón Social', unique=True, max_length=150, null=False, blank=False)
